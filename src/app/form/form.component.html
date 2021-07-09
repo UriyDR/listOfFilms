@@ -5,14 +5,21 @@
   <form action=""  [formGroup]="formAddFilm" (ngSubmit)="addFilm()" #userForm='ngForm'>
     <br><br><br><br>
 
-    <input required id="upload" type="file" class="hide" >
-    <label required for="upload">Upload picture</label>
+    <input   id="upload" type="file" class="hide" formControlName="fileImg" (change)="loadBackgroundImage($event)" accept="image/*">
+    <label  for="upload">Upload picture</label>
     <br><br>
-  <input  required type="text" placeholder="Name film"  formControlName="nameFilm"><br>
+
+    <img src="{{imageBase64}}" alt="Image" *ngIf="imageBase64" class="showImg">
+
     <br><br>
-  <input required type="number" placeholder="Year film"  formControlName="year">
+  <input   type="text" placeholder="Name film"  formControlName="nameFilm"><br>
     <br><br>
-  <input required type="number" placeholder="film box office"  formControlName="cash">
+
+
+
+  <input  type="number" placeholder="Year film"  formControlName="year">
     <br><br>
-    <button type="submit" [disabled]="!userForm.form.valid">send</button>
+  <input  type="number" placeholder="film box office"  formControlName="cash">
+    <br><br>
+    <button type="submit" [disabled]="!userForm.form.valid">Send</button>
   </form>
