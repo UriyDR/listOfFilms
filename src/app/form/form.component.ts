@@ -26,6 +26,8 @@ export class FormComponent implements OnInit {
     cash: null
   };
 
+  // dsobgnds'bhdmnsb'hdmns;
+
 
   constructor(private filmsServ: FilmsService, private router: Router) {
   }
