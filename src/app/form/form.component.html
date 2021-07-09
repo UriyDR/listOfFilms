@@ -1,0 +1,18 @@
+
+
+
+<div>
+  <form action=""  [formGroup]="formAddFilm" (ngSubmit)="addFilm()" #userForm='ngForm'>
+    <br><br><br><br>
+
+    <input required id="upload" type="file" class="hide" >
+    <label required for="upload">Upload picture</label>
+    <br><br>
+  <input  required type="text" placeholder="Name film"  formControlName="nameFilm"><br>
+    <br><br>
+  <input required type="number" placeholder="Year film"  formControlName="year">
+    <br><br>
+  <input required type="number" placeholder="film box office"  formControlName="cash">
+    <br><br>
+    <button type="submit" [disabled]="!userForm.form.valid">send</button>
+  </form>
