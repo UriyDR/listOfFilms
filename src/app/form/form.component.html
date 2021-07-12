@@ -4,7 +4,6 @@
 <div>
   <form action=""  [formGroup]="formAddFilm" (ngSubmit)="addFilm()" #userForm='ngForm'>
     <br><br><br><br>
-
     <input   id="upload" type="file" class="hide" formControlName="fileImg" (change)="loadBackgroundImage($event)" accept="image/*">
     <label  for="upload">Upload picture</label>
     <br><br>
@@ -21,5 +20,6 @@
     <br><br>
   <input  type="number" placeholder="film box office"  formControlName="cash">
     <br><br>
-    <button type="submit" [disabled]="!userForm.form.valid">Send</button>
+    <button type="submit"  [disabled]="!userForm.form.valid">Send</button>
+
   </form>

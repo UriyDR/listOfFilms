@@ -39,18 +39,19 @@ export class FilmsService {
 
 
   getAllFilms = () => {
-    let data = localStorage.getItem('filmDefault');
-    if (data) {
-      return JSON.parse(data);
+    let data: any = localStorage.getItem('filmDefault');
+    let parsed = JSON.parse(data)
+    if (parsed.length) {
+      return parsed
     } else {
-      return this.filmDefault;
+      return  this.filmDefault
     }
   }
 
+
+
   setAllFilms = (films: Array<FilmModel>) => localStorage.setItem('filmDefault', JSON.stringify(films));
 
-
-  // deletItem = () => localStorage.removeItem('filmDefault')
 
 
 }

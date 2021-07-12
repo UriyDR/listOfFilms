@@ -1,2 +1,26 @@
-<p>all films will be displayed here</p>
-<!--<p>{{poluchilZapis}}</p>-->
+
+
+<ng-container *ngIf="films.length; else noFilms">
+  <div class="film" *ngFor="let film of films; index as i">
+
+    <img class="imgFilmCard" src="{{film.img}}" alt="photo">
+    <div>{{film.name}}</div>
+    <div>{{film.year}}</div>
+    <div>{{film.cash}}</div>
+    <div>{{film.date}}</div>
+
+
+    <button (click)="deleteFilm(film.id)">delete</button>
+    <button (click)="favourite(film)">
+      {{film.isFavorite ? 'Remove from' : 'Add to'}} favourite
+    </button>
+    <hr>
+  </div>
+</ng-container>
+
+<ng-template #noFilms>
+  No films in list!
+</ng-template>
+
+
+

@@ -24,12 +24,17 @@ export class FormComponent implements OnInit {
 
   films: Array<FilmModel> = [];
 
+
+
   constructor(private filmsServ: FilmsService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.films = this.filmsServ.getAllFilms();
   }
+
+
+
 
   addFilm = () => {
     let data = new Date();
@@ -44,8 +49,9 @@ export class FormComponent implements OnInit {
       img: this.imageBase64
 
     })
-    console.log(this.films);
-    // this.router.navigate(['/allFilms', {}]);
+    this.filmsServ.setAllFilms(this.films);
+    this.router.navigate(['/allFilms', {}]);
+
   }
 
 
@@ -70,7 +76,7 @@ export class FormComponent implements OnInit {
 
   IdRandom() {
     let result:any,
-        randomID: any = Math.floor(Math.random() * 6);
+        randomID: any = Math.random() * 100000;
     this.films.forEach(film => {
       result = film.id === randomID ? this.IdRandom() : randomID;
     })

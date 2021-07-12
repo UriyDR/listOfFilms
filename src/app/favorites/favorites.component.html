@@ -1,1 +1,14 @@
-<p>favorites will be displayed here</p>
+
+<ng-container *ngFor="let filmTrue of films">
+  <div class="film" *ngIf="filmTrue.isFavorite">
+
+    <img class="imgFilmCard" src="{{filmTrue.img}}" alt="photo">
+    <div>{{filmTrue.name}}</div>
+    <div>{{filmTrue.year}}</div>
+    <div>{{filmTrue.cash}}</div>
+    <div>{{filmTrue.date}}</div>
+    <button (click)="favourite(filmTrue)">Remove from favourite</button>
+
+    <hr>
+  </div>
+</ng-container>
