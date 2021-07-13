@@ -1,21 +1,60 @@
 
 
+<div class="sort">
+<button class="sort">Sort</button>
+<button>Search</button>
+<button (click)="onChangeView()">View</button>
+</div>
+
+
+
 <ng-container *ngIf="films.length; else noFilms">
-  <div class="film" *ngFor="let film of films; index as i">
 
-    <img class="imgFilmCard" src="{{film.img}}" alt="photo">
-    <div>{{film.name}}</div>
-    <div>{{film.year}}</div>
-    <div>{{film.cash}}</div>
-    <div>{{film.date}}</div>
+  <ng-container *ngIf="isThumbs; else listView">
+    <div class="allFilm">
+      <div  *ngFor="let film of films; index as i">
+        <div class="FilmCard">
+          <img class="imgFilmCard" src="{{film.img}}" alt="photo">
+          <div>Name: {{film.name}}</div>
+          <div>Year: {{film.year}}</div>
+          <div>Box office receipts: {{film.cash | number}}</div>
+          <div>Date: {{film.date | date: 'dd.MM.yyyy '}}</div>
+          <button (click)="deleteFilm(film.id)">delete</button>
+          <button (click)="favourite(film)">{{film.isFavorite ? 'Remove from' : 'Add to'}} favourite</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 
 
-    <button (click)="deleteFilm(film.id)">delete</button>
-    <button (click)="favourite(film)">
-      {{film.isFavorite ? 'Remove from' : 'Add to'}} favourite
-    </button>
-    <hr>
-  </div>
+
+
+  <ng-template #listView>
+    <div *ngFor="let film of films; index as i">
+
+
+      <ul>
+      <img class="imgFilmList" src="{{film.img}}" alt="photo">
+      <li>Name: {{film.name}}</li>
+      <li>Year:{{film.year}}</li>
+      <li> Box office receipts: {{film.cash | number}}</li>
+      <li>Date: {{film.date | date: 'dd.MM.yyyy '}}</li>
+      <button (click)="deleteFilm(film.id)">delete</button>
+      <button (click)="favourite(film)">
+        {{film.isFavorite ? 'Remove from' : 'Add to'}} favourite
+      </button>
+      </ul>
+
+
+
+    </div>
+  </ng-template>
+
+
+
+
+
+
 </ng-container>
 
 <ng-template #noFilms>

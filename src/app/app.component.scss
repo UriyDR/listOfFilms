@@ -2,9 +2,7 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
-    .themeColor {
-    background: orange;
-  }
+  background: lightgray;
 
 }
 
@@ -12,3 +10,7 @@
   text-align: center;
 }
 
+.changeColor{
+  background: khaki;
+  color: red;
+}

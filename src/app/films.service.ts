@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {FilmModel} from "./filmModel";
 
 @Injectable({
@@ -35,7 +35,8 @@ export class FilmsService {
     }
   ]
 
-  constructor() {  }
+  constructor() {
+  }
 
 
   getAllFilms = () => {
@@ -44,15 +45,28 @@ export class FilmsService {
     if (parsed.length) {
       return parsed
     } else {
-      return  this.filmDefault
+      return this.filmDefault
     }
   }
-
 
 
   setAllFilms = (films: Array<FilmModel>) => localStorage.setItem('filmDefault', JSON.stringify(films));
 
 
+  getTheme = () => {
+    let data: any = localStorage.getItem('theme');
+    return JSON.parse(data)
+  }
+  setTheme = (theme: boolean) => {
+    localStorage.setItem('theme', JSON.stringify(theme));
+  }
 
+  getView = () => {
+    let data: any = localStorage.getItem('view');
+    return JSON.parse(data)
+  }
+  setView = (view: boolean) => {
+    localStorage.setItem('view', JSON.stringify(view));
+  }
 }
 

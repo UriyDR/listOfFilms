@@ -13,6 +13,7 @@ import {FormComponent} from './form/form.component';
 import {AllFilmsComponent} from './all-films/all-films.component';
 import {FavoritesComponent} from './favorites/favorites.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NumberPipe } from './number.pipe';
 
 const appRoutes: Routes = [
   {path: 'form', component: FormComponent},
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     NaviComponent,
     FormComponent,
     AllFilmsComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    NumberPipe
   ],
   imports: [
     BrowserModule,

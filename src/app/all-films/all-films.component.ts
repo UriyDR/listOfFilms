@@ -1,6 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {FilmsService} from "../films.service";
 import {FilmModel} from "../filmModel";
+
+
+
 
 
 @Component({
@@ -12,6 +15,8 @@ import {FilmModel} from "../filmModel";
 
 export class AllFilmsComponent implements OnInit {
 
+   isThumbs: boolean = true;
+
 
   films: Array<FilmModel> = [];
 
@@ -20,6 +25,7 @@ export class AllFilmsComponent implements OnInit {
 
   ngOnInit(): void {
     this.films = this.filmsServ.getAllFilms();
+    this.isThumbs = this.filmsServ.getView();
   }
 
   favourite(film: any) {
@@ -34,6 +40,13 @@ export class AllFilmsComponent implements OnInit {
     this.films.splice(index, 1);
     this.filmsServ.setAllFilms(this.films);
   }
+
+  onChangeView(){
+    this.isThumbs = !this.isThumbs;
+    this.filmsServ.setView(this.isThumbs);
+  }
+
+
 
 
 }

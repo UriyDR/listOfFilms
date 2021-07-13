@@ -9,12 +9,14 @@ import {FilmModel} from "../filmModel";
 })
 export class FavoritesComponent implements OnInit {
 
+  isThumbs: boolean = true;
   films: Array<FilmModel> = [];
 
   constructor(private filmsServ: FilmsService) { }
 
   ngOnInit(): void {
     this.films = this.filmsServ.getAllFilms();
+    this.isThumbs = this.filmsServ.getView();
   }
 
 
@@ -22,6 +24,11 @@ export class FavoritesComponent implements OnInit {
   favourite(film: any) {
     film.isFavorite = !film.isFavorite
     this.filmsServ.setAllFilms(this.films);
+  }
+
+  onChangeView(){
+    this.isThumbs = !this.isThumbs;
+    this.filmsServ.setView(this.isThumbs);
   }
 
 }

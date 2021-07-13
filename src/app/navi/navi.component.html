@@ -2,11 +2,18 @@
 
 <div>
   <button [routerLink]="'allFilms'">All films</button>
-  <button>Theme</button>
-  <button [routerLink]="'form'">+</button>
-  <button>View</button>
-  <button [routerLink]="'favorites'">Favorites</button>
-  <button>Sort</button>
-  <button>Search</button>
-</div>
 
+
+  <button (click)="onChangeTheme()">Theme</button>
+
+
+  <button [routerLink]="'form'">+</button>
+
+
+
+
+
+
+  <button [routerLink]="'favorites'">Favorites</button>
+
+</div>

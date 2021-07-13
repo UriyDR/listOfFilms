@@ -1,10 +1,36 @@
 
 
-
-
-
-
 .imgFilmCard{
-  width: 100px;
+  width: auto;
   height: 100px;
+  margin: 5px;
+
 }
+
+.FilmCard{
+  width: 200px;
+  max-height: 300px;
+  border: 2px red dashed;
+  margin: 5px;
+
+}
+
+.allFilm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: normal;
+}
+
+ul li{
+  display: inline;
+}
+
+.imgFilmList {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.sort{
+  margin-top: 20px;
+}
+
