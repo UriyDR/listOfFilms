@@ -1,9 +1,9 @@
 
-
 .ng-valid[required], ng-valid.required {
   border-left: 5px solid #42A948;
 }
-.ng-invalid:not(form){
+
+.ng-invalid:not(form) {
   border-left: 5px solid #a94442;
 }
 
@@ -23,14 +23,19 @@ label {
   background-color: blue;
   color: white;
   font-weight: bold;
+  width: 120px;
 }
 
 .showImg {
-  width: 150px;
+  margin-top: 5px;
+  width: 180px;
   height: 100px;
-  background-repeat: no-repeat;
 }
 
+.form {
+  margin-top: 50px;
+  text-align: center;
+}
 
 
 

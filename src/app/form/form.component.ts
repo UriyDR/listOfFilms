@@ -25,15 +25,12 @@ export class FormComponent implements OnInit {
   films: Array<FilmModel> = [];
 
 
-
   constructor(private filmsServ: FilmsService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.films = this.filmsServ.getAllFilms();
   }
-
-
 
 
   addFilm = () => {
@@ -55,7 +52,6 @@ export class FormComponent implements OnInit {
   }
 
 
-
   loadBackgroundImage(e: any) {
     let file = e.target.files[0];
     let reader = new FileReader();
@@ -75,14 +71,13 @@ export class FormComponent implements OnInit {
 
 
   IdRandom() {
-    let result:any,
-        randomID: any = Math.random() * 100000;
+    let result: any,
+      randomID: any = Math.random() * 100000;
     this.films.forEach(film => {
       result = film.id === randomID ? this.IdRandom() : randomID;
     })
     return result
   }
-
 
 
 }

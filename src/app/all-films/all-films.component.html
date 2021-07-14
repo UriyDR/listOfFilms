@@ -1,18 +1,25 @@
 
 
-<div class="sort">
-<button class="sort">Sort</button>
-<button>Search</button>
-<button (click)="onChangeView()">View</button>
-</div>
 
+
+<div class="sort">
+  <select [(ngModel)]="sortStr">
+    <option value="" disabled selected>Sort</option>
+    <option [value]="'name'" (click)="changeSort()">Sort name</option>
+    <option [value]="'year'">Sort year</option>
+    <option [value]="'date'">Sort date</option>
+  </select>
+  <button (click)="onChangeView()">View</button>
+  <input type="text" placeholder="Search" [(ngModel)]="searchStr">
+</div>
 
 
 <ng-container *ngIf="films.length; else noFilms">
 
   <ng-container *ngIf="isThumbs; else listView">
     <div class="allFilm">
-      <div  *ngFor="let film of films; index as i">
+      <div *ngFor="let film of films | sort:sortStr:isAsc | search:searchStr; index as i">
+
         <div class="FilmCard">
           <img class="imgFilmCard" src="{{film.img}}" alt="photo">
           <div>Name: {{film.name}}</div>
@@ -21,6 +28,7 @@
           <div>Date: {{film.date | date: 'dd.MM.yyyy '}}</div>
           <button (click)="deleteFilm(film.id)">delete</button>
           <button (click)="favourite(film)">{{film.isFavorite ? 'Remove from' : 'Add to'}} favourite</button>
+
         </div>
       </div>
     </div>
@@ -29,30 +37,29 @@
 
 
 
+
+
+
+
   <ng-template #listView>
-    <div *ngFor="let film of films; index as i">
+    <div *ngFor="let film of films | sort:sortStr:isAsc | search:searchStr ; index as i">
 
 
       <ul>
-      <img class="imgFilmList" src="{{film.img}}" alt="photo">
-      <li>Name: {{film.name}}</li>
-      <li>Year:{{film.year}}</li>
-      <li> Box office receipts: {{film.cash | number}}</li>
-      <li>Date: {{film.date | date: 'dd.MM.yyyy '}}</li>
-      <button (click)="deleteFilm(film.id)">delete</button>
-      <button (click)="favourite(film)">
-        {{film.isFavorite ? 'Remove from' : 'Add to'}} favourite
-      </button>
+        <img class="imgFilmList" src="{{film.img}}" alt="photo">
+        <li>Name: {{film.name}}</li>
+        <li>Year:{{film.year}}</li>
+        <li> Box office receipts: {{film.cash | number}}</li>
+        <li>Date: {{film.date | date: 'dd.MM.yyyy '}}</li>
+        <button (click)="deleteFilm(film.id)">delete</button>
+        <button (click)="favourite(film)">
+          {{film.isFavorite ? 'Remove from' : 'Add to'}} favourite
+        </button>
       </ul>
-
 
 
     </div>
   </ng-template>
-
-
-
-
 
 
 </ng-container>

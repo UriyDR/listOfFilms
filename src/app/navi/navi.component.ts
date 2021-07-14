@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Output, EventEmitter} from '@angular/core';
-import { FilmsService } from "../films.service";
+import {FilmsService} from "../films.service";
 
 @Component({
   selector: 'app-navi',
@@ -17,7 +17,6 @@ export class NaviComponent implements OnInit {
   isDarkTheme = false;
 
 
-
   constructor(private themeService: FilmsService) {
 
   }
@@ -32,8 +31,6 @@ export class NaviComponent implements OnInit {
     this.themeService.setTheme(this.isDarkTheme);
     this.changeTheme.emit(this.isDarkTheme)
   }
-
-
 
 
 }

@@ -2,16 +2,23 @@
 
 
 <div class="sort">
-<button>Sort</button>
-<button>Search</button>
-<button (click)="onChangeView()">View</button>
+  <select [(ngModel)]="sortStr">
+    <option value="" disabled selected>Sort</option>
+    <option [value]="'name'">Sort name</option>
+    <option [value]="'year'">Sort year</option>
+    <option [value]="'date'">Sort date</option>
+  </select>
+  <button (click)="onChangeView()">View</button>
+  <input type="text" placeholder="Search" [(ngModel)]="searchStr">
 </div>
+
+
 
 
 <ng-container *ngIf="isThumbs; else listView">
 
   <div class="allFilm">
-  <ng-container *ngFor="let filmTrue of films">
+    <ng-container *ngFor="let filmTrue of films | sort:sortStr:isAsc | search:searchStr">
 
       <div *ngIf="filmTrue.isFavorite">
         <div class="FilmCard">
@@ -24,29 +31,27 @@
         </div>
       </div>
 
-  </ng-container>
-</div>
+    </ng-container>
+  </div>
 </ng-container>
 
 
-
-  <ng-template #listView>
-    <div *ngFor="let film of films; index as i">
-
-
-      <ul *ngIf="film.isFavorite">
-        <img class="imgFilmList" src="{{film.img}}" alt="photo">
-        <li>Name: {{film.name}}</li>
-        <li>Year:{{film.year}}</li>
-        <li> Box office receipts: {{film.cash | number}}</li>
-        <li>Date: {{film.date | date: 'dd.MM.yyyy '}}</li>
-        <button (click)="favourite(film)">Remove from favourite</button>
-      </ul>
+<ng-template #listView>
+  <div *ngFor="let film of films | sort:sortStr:isAsc | search:searchStr; index as i">
 
 
+    <ul *ngIf="film.isFavorite">
+      <img class="imgFilmList" src="{{film.img}}" alt="photo">
+      <li>Name: {{film.name}}</li>
+      <li>Year:{{film.year}}</li>
+      <li> Box office receipts: {{film.cash | number}}</li>
+      <li>Date: {{film.date | date: 'dd.MM.yyyy '}}</li>
+      <button (click)="favourite(film)">Remove from favourite</button>
+    </ul>
 
-    </div>
-  </ng-template>
+
+  </div>
+</ng-template>
 
 
 

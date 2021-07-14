@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FilmsService} from "../films.service";
 import {FilmModel} from "../filmModel";
 
@@ -8,11 +8,14 @@ import {FilmModel} from "../filmModel";
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
-
+  searchStr = '';
+  sortStr= '';
   isThumbs: boolean = true;
   films: Array<FilmModel> = [];
+  isAsc = true;
 
-  constructor(private filmsServ: FilmsService) { }
+  constructor(private filmsServ: FilmsService) {
+  }
 
   ngOnInit(): void {
     this.films = this.filmsServ.getAllFilms();
@@ -20,13 +23,12 @@ export class FavoritesComponent implements OnInit {
   }
 
 
-
   favourite(film: any) {
     film.isFavorite = !film.isFavorite
     this.filmsServ.setAllFilms(this.films);
   }
 
-  onChangeView(){
+  onChangeView() {
     this.isThumbs = !this.isThumbs;
     this.filmsServ.setView(this.isThumbs);
   }

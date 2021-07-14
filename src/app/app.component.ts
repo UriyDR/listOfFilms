@@ -12,10 +12,10 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   title = 'films';
-  isViewChange:boolean=false;
+  isViewChange: boolean = false;
   isDarkTheme = false;
 
-  constructor(private themeService : FilmsService) {
+  constructor(private themeService: FilmsService) {
     this.isDarkTheme = this.themeService.getTheme();
   }
 
@@ -23,7 +23,7 @@ export class AppComponent {
     this.isDarkTheme = ev;
   }
 
-  changeView(ev: boolean){
+  changeView(ev: boolean) {
     this.isViewChange = ev;
   }
 

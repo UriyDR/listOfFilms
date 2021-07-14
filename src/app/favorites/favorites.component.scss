@@ -1,13 +1,12 @@
 
-
-.imgFilmCard{
+.imgFilmCard {
   width: auto;
   height: 100px;
   margin: 5px;
 
 }
 
-.FilmCard{
+.FilmCard {
   width: 200px;
   max-height: 300px;
   border: 2px red dashed;
@@ -21,7 +20,7 @@
   justify-content: normal;
 }
 
-ul li{
+ul li {
   display: inline;
 }
 
@@ -31,6 +30,8 @@ ul li{
   margin-right: 10px;
 }
 
-.sort{
+.sort {
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }

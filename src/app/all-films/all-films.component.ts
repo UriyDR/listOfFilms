@@ -4,8 +4,6 @@ import {FilmModel} from "../filmModel";
 
 
 
-
-
 @Component({
   selector: 'app-all-films',
   templateUrl: './all-films.component.html',
@@ -15,7 +13,11 @@ import {FilmModel} from "../filmModel";
 
 export class AllFilmsComponent implements OnInit {
 
-   isThumbs: boolean = true;
+  isThumbs: boolean = true;
+  searchStr = '';
+  sortStr:any = '';
+
+  isAsc = false;
 
 
   films: Array<FilmModel> = [];
@@ -35,18 +37,19 @@ export class AllFilmsComponent implements OnInit {
 
   deleteFilm(id: any) {
 
-    let index = this.films.findIndex( film => film.id === id)
+    let index = this.films.findIndex(film => film.id === id)
 
     this.films.splice(index, 1);
     this.filmsServ.setAllFilms(this.films);
   }
 
-  onChangeView(){
+  onChangeView() {
     this.isThumbs = !this.isThumbs;
     this.filmsServ.setView(this.isThumbs);
   }
 
-
-
+  changeSort() {
+    this.isAsc = !this.isAsc;
+  }
 
 }
