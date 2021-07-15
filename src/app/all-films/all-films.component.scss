@@ -36,3 +36,30 @@ ul li {
   justify-content: space-between;
 }
 
+
+.searchFilm {
+  height: 40px;
+  min-width: 40px;
+  max-width: 200px;
+  flex-grow: 1;
+  line-height: 40px;
+  font-size: 14px;
+  box-sizing: border-box;
+
+
+  margin-right: 12px;
+}
+
+.viewButton {
+  border-radius: 25px;
+
+  float: left;
+  font-weight: 500;
+  margin: 0 20px 0 0;
+  padding: 10px 20px;
+  text-align: center;
+  width: 110px;
+  cursor: pointer;
+  background: #8300ff;
+  color: #fff;
+}

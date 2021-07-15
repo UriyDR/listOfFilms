@@ -1,7 +1,3 @@
-
-
-
-
 <div class="sort">
   <select [(ngModel)]="sortStr">
     <option value="" disabled selected>Sort</option>
@@ -9,8 +5,8 @@
     <option [value]="'year'">Sort year</option>
     <option [value]="'date'">Sort date</option>
   </select>
-  <button (click)="onChangeView()">View</button>
-  <input type="text" placeholder="Search" [(ngModel)]="searchStr">
+  <button class="viewButton" (click)="onChangeView()">View</button>
+  <input class="searchFilm" type="text" placeholder="Search" [(ngModel)]="searchStr">
 </div>
 
 
@@ -35,28 +31,33 @@
   </ng-container>
 
 
-
-
-
-
-
-
   <ng-template #listView>
     <div *ngFor="let film of films | sort:sortStr:isAsc | search:searchStr ; index as i">
 
+      <table border="1">
 
-      <ul>
-        <img class="imgFilmList" src="{{film.img}}" alt="photo">
-        <li>Name: {{film.name}}</li>
-        <li>Year:{{film.year}}</li>
-        <li> Box office receipts: {{film.cash | number}}</li>
-        <li>Date: {{film.date | date: 'dd.MM.yyyy '}}</li>
-        <button (click)="deleteFilm(film.id)">delete</button>
-        <button (click)="favourite(film)">
-          {{film.isFavorite ? 'Remove from' : 'Add to'}} favourite
-        </button>
-      </ul>
+        <tr>
+          <th>Img</th>
+          <th>Name:</th>
+          <th>Year:</th>
+          <th>Box office receipts:</th>
+          <th>Date:</th>
+          <th>favourite:</th>
+        </tr>
+        <tr>
+          <td><img class="imgFilmList" src="{{film.img}}" alt="photo"></td>
+          <td>{{film.name}}</td>
+          <td>{{film.year}}</td>
+          <td>{{film.cash | number}}</td>
+          <td>{{film.date | date: 'dd.MM.yyyy '}}</td>
+          <td>
+            <button (click)="favourite(film)">{{film.isFavorite ? 'Remove from' : 'Add to'}}
+              favourite
+            </button>
+          </td>
+        </tr>
 
+      </table>
 
     </div>
   </ng-template>
