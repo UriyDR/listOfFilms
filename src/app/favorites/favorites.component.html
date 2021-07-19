@@ -18,7 +18,7 @@
 <ng-container *ngIf="isThumbs; else listView">
 
   <div class="allFilm">
-    <ng-container *ngFor="let filmTrue of films | sort:sortStr:isAsc | search:searchStr">
+    <ng-container *ngFor="let filmTrue of films | sort:sortStr | search:searchStr">
 
       <div *ngIf="filmTrue.isFavorite">
         <div class="FilmCard">
@@ -37,7 +37,7 @@
 
 
 <ng-template #listView>
-  <div *ngFor="let film of films | sort:sortStr:isAsc | search:searchStr; index as i">
+  <div *ngFor="let film of films | sort:sortStr | search:searchStr; index as i">
 
 
     <ul *ngIf="film.isFavorite">

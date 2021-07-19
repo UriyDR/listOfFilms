@@ -1,9 +1,6 @@
 <div class="container" [ngClass]="{changeColor : isDarkTheme}">
 
-
-
-
-  <div class="head">
+    <div class="head">
     <div class="headFilm">
       <h1 class="headH1">
         FILMS
@@ -12,9 +9,11 @@
 
   </div>
 
-
-
   <app-navi (changeTheme)="changeTheme($event)"></app-navi>
   <router-outlet></router-outlet>
+
 </div>
+
+
+
 

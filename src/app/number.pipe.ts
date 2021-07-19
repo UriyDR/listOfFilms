@@ -9,7 +9,7 @@ export class NumberPipe implements PipeTransform {
     const abs: number = Math.abs(number);
     let resultNumber: any;
 
-    if (abs < Math.pow(10, 12) && abs >= Math.pow(10, 8)) {
+    if (abs >= Math.pow(10, 8)) {
       // billion
       resultNumber = parseFloat((number / Math.pow(10, 9)).toFixed(2)) + 'B';
     } else if (abs < Math.pow(10, 9) && abs >= Math.pow(10, 5)) {

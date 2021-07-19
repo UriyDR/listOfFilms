@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 
 
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NaviComponent} from './navi/navi.component';
@@ -16,10 +17,21 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NumberPipe} from './number.pipe';
 import { SearchPipe } from './search.pipe';
 import { SortPipe } from './sort.pipe';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatTableModule} from '@angular/material/table';
+import { TableTestComponent } from './table-test/table-test.component';
+import {MatSortModule} from "@angular/material/sort";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from '@angular/material/input';
 
 const appRoutes: Routes = [
   {path: 'form', component: FormComponent},
   {path: 'allFilms', component: AllFilmsComponent},
+  {path: 'tableTest', component: TableTestComponent},
   {path: 'favorites', component: FavoritesComponent}
 ]
 
@@ -32,7 +44,8 @@ const appRoutes: Routes = [
     FavoritesComponent,
     NumberPipe,
     SearchPipe,
-    SortPipe
+    SortPipe,
+    TableTestComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +53,16 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatBadgeModule,
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [FilmsService],
   bootstrap: [AppComponent]

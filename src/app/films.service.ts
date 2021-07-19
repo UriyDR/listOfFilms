@@ -1,11 +1,14 @@
 import {Injectable} from '@angular/core';
 import {FilmModel} from "./filmModel";
+import {of, Observable} from "rxjs";
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class FilmsService {
+
   data = new Date();
 
   filmDefault: Array<FilmModel> = [
@@ -39,6 +42,7 @@ export class FilmsService {
   }
 
 
+
   getAllFilms = () => {
     let data: any = localStorage.getItem('filmDefault');
     let parsed = JSON.parse(data)
@@ -48,6 +52,13 @@ export class FilmsService {
       return this.filmDefault
     }
   }
+
+
+
+  strim$ = new Observable (obser => obser.next(this.setMyValueTest()));
+  setMyValueTest = () => localStorage.setItem('MyValueTest', JSON.stringify('MyValueTest'));
+
+
 
 
   setAllFilms = (films: Array<FilmModel>) => localStorage.setItem('filmDefault', JSON.stringify(films));

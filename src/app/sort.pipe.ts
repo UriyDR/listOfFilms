@@ -4,26 +4,27 @@ import {Pipe, PipeTransform} from '@angular/core';
   name: 'sort', pure: false
 })
 export class SortPipe implements PipeTransform {
-  transform(array: any, value: any, isAsc: any) {
-    console.log(isAsc);
-    if (value) {
-      if (isAsc) {
+  transform(array: any, value: any) {
+    if (value.name) {
+      if (value.asc) {
         return [...array.sort((a: any, b: any) => {
-          if (parseInt(a[value]) && parseInt(b[value])) {
-            return (a[value] > b[value]) ? 1 : ((b[value] > a[value]) ? -1 : 0)
+          if (parseInt(a[value.name]) && parseInt(b[value.name])) {
+            return (a[value.name] > b[value.name]) ? 1 : ((b[value.name] > a[value.name]) ? -1 : 0)
           } else {
-            return (a[value].toLowerCase() > b[value].toLowerCase()) ? 1 : ((b[value].toLowerCase() > a[value].toLowerCase()) ? -1 : 0)
+            return (a[value.name].toLowerCase() > b[value.name].toLowerCase()) ? 1 : ((b[value.name].toLowerCase() > a[value.name].toLowerCase()) ? -1 : 0)
           }
         })]
       } else {
         return [...array.sort((a: any, b: any) => {
-          if (parseInt(a[value]) && parseInt(b[value])) {
-            return (b[value] > a[value]) ? 1 : ((a[value] > b[value]) ? -1 : 0)
+          if (parseInt(a[value.name]) && parseInt(b[value.name])) {
+            return (b[value.name] > a[value.name]) ? 1 : ((a[value.name] > b[value.name]) ? -1 : 0)
           } else {
-            return (b[value].toLowerCase() > a[value].toLowerCase()) ? 1 : ((a[value].toLowerCase() > b[value].toLowerCase()) ? -1 : 0)
+            return (b[value.name].toLowerCase() > a[value.name].toLowerCase()) ? 1 : ((a[value.name].toLowerCase() > b[value.name].toLowerCase()) ? -1 : 0)
           }
         })]
       }
     } else return array
   }
+
+
 }

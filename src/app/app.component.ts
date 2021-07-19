@@ -11,6 +11,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+
   title = 'films';
   isViewChange: boolean = false;
   isDarkTheme = false;
